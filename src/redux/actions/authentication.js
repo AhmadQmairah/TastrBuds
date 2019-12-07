@@ -1,5 +1,6 @@
 import axios from "axios";
 import jwt_decode from "jwt-decode";
+import instance from "./instance";
 
 import { SET_CURRENT_USER, GET_USER_PROFILE, GET_ADDRESS } from "./actionTypes";
 
@@ -23,10 +24,7 @@ export const checkForExpiredToken = () => {
 export const authorization = (userData, type, history) => {
   return async dispatch => {
     try {
-      const res = await axios.post(
-        `https://e46a20af.ngrok.io/${type}/`,
-        userData
-      );
+      const res = await instance.post(`/${type}/`, userData);
       const user = res.data;
 
       if (type === "login") {
@@ -48,11 +46,11 @@ const setCurrentUser = token => {
     let user;
     if (token) {
       localStorage.setItem("token", token);
-      axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+      instance.defaults.headers.common.Authorization = `Bearer ${token}`;
       user = jwt_decode(token);
     } else {
       localStorage.removeItem("token");
-      delete axios.defaults.headers.common.Authorization;
+      delete instance.defaults.headers.common.Authorization;
       user = null;
     }
     dispatch({

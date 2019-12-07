@@ -4,7 +4,7 @@ import reducer from "./unnamed";
 import auth from "./authentication";
 const rootReducer = combineReducers({
   //the following two lines are an example
-  semesters: reducer,
+  categories: reducer,
   rootAuth: auth
 });
 

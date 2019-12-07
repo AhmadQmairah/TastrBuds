@@ -1,9 +1,2 @@
 export { authorization, checkForExpiredToken, logout } from "./authentication";
-export {
-  getSemesters,
-  addSemester,
-  addProject,
-  getCriteria,
-  addCriterion,
-  addTeam
-} from "./unnamed";
+export { getCategories, SetVideos, vote, AddVideo } from "./unnamed";

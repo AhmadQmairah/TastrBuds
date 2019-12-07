@@ -1,29 +1,23 @@
 const initialState = {
-  semesters: [],
-  criteria: []
+  categories: [],
+  video1: null,
+  video2: null,
+  videos: []
 };
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-    case "GET_SEMESTERS":
-      return { ...state, semesters: payload };
-    case "GET_CRITERIA": {
-      console.log(payload);
-      return { ...state, criteria: payload };
+    case "GET_CATEGORIES": {
+      return { ...state, categories: payload };
     }
-    case "ADD_CRITERION": {
-      console.log(payload);
-      return { ...state, criteria: [...state.criteria, payload] };
-    }
-    case "ADD_TEAM": {
-      console.log(payload);
-      return { ...state };
-    }
-    case "ADD_SEMESTER": {
-      return { ...state, semesters: [payload, ...state.semesters] };
-    }
-    case "ADD_PROJECT": {
-      return { ...state, semesters: payload };
+    case "SET": {
+      console.log(payload.video1, payload.video2);
+      return {
+        ...state,
+        video1: payload.video1,
+        video2: payload.video2,
+        videos: payload.videos
+      };
     }
 
     default:

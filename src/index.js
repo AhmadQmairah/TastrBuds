@@ -11,9 +11,9 @@ import store from "./redux";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
-import { getSemesters, getCriteria } from "./redux/actions";
-store.dispatch(getCriteria());
-store.dispatch(getSemesters());
+import { getCategories } from "./redux/actions";
+store.dispatch(getCategories());
+
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
